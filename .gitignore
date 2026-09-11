@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+dist/
+build/
+*.spec
+*.log
+vectorstore/
+# Do not commit secure keys if they are active
+secure_config.enc

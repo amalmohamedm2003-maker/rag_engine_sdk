@@ -1,0 +1,10 @@
+{
+  "STRICTNESS_LEVELS": {
+    "1": "Strictness Level: Hybrid/Creative. It will transform the context into a highly detailed and descriptive response that aims to be double the size of the original context. It will write an engaging introductory paragraph, deeply expand on the context using its pre-trained knowledge with paragraphs and bullet points, and conclude with an extra summary.",
+    "2": "Strictness Level: Balanced. It will transform the context into an organized, descriptive response that balances creative detail and strict factual reporting. It will provide a detailed breakdown using paragraphs and bullet points, and conclude with a short summary at the end, without introducing any external facts.",
+    "3": "Strictness Level: Ultra-Strict. It will stick exactly to the context and is explicitly forbidden from summarizing, shortening, or truncating anything. It will take the entire context and transform it into complete sentences, retaining every single detail present in the source text without any markdown formatting."
+  },
+  "DESCRIPTIVE_LAYOUT": "",
+  "RAG_ANSWER_PROMPT": "You are a precise question-answering assistant.\n\nUsing ONLY the context provided below, answer the user's question faithfully and directly.\nDo NOT make up any information. Do NOT add anything not found in the context.\nIf the context does not contain the answer, say exactly: \"The context does not contain sufficient information to answer this question.\"\n\nContext:\n{context}\n\nQuestion:\n{question}\n\nRespond in this EXACT JSON format (no markdown, no code fences, just raw JSON):\n{\n  \"answer\": \"<your direct answer based solely on the context>\",\n  \"answerable\": true or false\n}\n",
+  "SIMPLE_ANSWER_PROMPT": "You are a precise question-answering assistant.\n\nUsing ONLY the context provided below, answer the user's question directly.\nDo NOT make up any information. Do NOT add anything not found in the context.\nIf the context does not contain the answer, say exactly: \"The context does not contain sufficient information to answer this question.\"\n\nContext:\n{context}\n\nQuestion:\n{question}\n"
+}
