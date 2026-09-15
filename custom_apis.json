@@ -1,0 +1,29 @@
+{
+  "openai": {
+    "baseUrl": "https://api.openai.com/v1",
+    "routePath": "chat/completions",
+    "authType": "Bearer",
+    "apiKey": "sk-your-openai-api-key-here",
+    "modelId": "gpt-4o-mini",
+    "payloadMapper": "openai_compatible"
+  },
+  "openrouter": {
+    "baseUrl": "https://openrouter.ai/api/v1",
+    "routePath": "chat/completions",
+    "authType": "Bearer",
+    "apiKey": "sk-or-v1-your-openrouter-key-here",
+    "modelId": "google/gemini-flash-1.5-8b",
+    "payloadMapper": "openai_compatible"
+  },
+  "custom_provider": {
+    "baseUrl": "https://api.your-custom-provider.com",
+    "routePath": "/generate",
+    "authType": "CustomHeader",
+    "authHeaderName": "X-Api-Key",
+    "apiKey": "your-custom-key-here",
+    "modelId": "your-model-name",
+    "payloadMapper": "custom_json",
+    "customBodyTemplate": "{\"prompt\": \"{prompt}\", \"temperature\": 0.7}",
+    "customResponsePath": "response.text"
+  }
+}
