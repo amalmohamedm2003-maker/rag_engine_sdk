@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-09-16T12:00:00Z",
+    "question": "Summarize the document",
+    "answer": "This is a sanitized dummy answer. The original document was processed and analyzed.",
+    "faithfulness_score": 0.95,
+    "groundedness_score": 0.95,
+    "sources_used": 1,
+    "sources": [
+      {
+        "file": "dummy_document.pdf",
+        "page": 1,
+        "chunk_index": 0,
+        "text": "Dummy source text."
+      }
+    ]
+  }
+]

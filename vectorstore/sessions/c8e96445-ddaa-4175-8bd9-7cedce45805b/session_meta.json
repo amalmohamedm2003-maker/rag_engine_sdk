@@ -1,0 +1,13 @@
+{
+  "session_id": "c8e96445-ddaa-4175-8bd9-7cedce45805b",
+  "name": "kkkk",
+  "created_at": "2026-09-15T07:19:08.971Z",
+  "indexed": true,
+  "chunk_size": 800,
+  "overlap": 100,
+  "top_k": 5,
+  "pdfs": [
+    "LEGAL HEIR .pdf"
+  ],
+  "chunks": 2
+}

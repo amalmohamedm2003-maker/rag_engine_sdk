@@ -1,0 +1,14 @@
+{
+  "session_id": "10609d06-5b12-439f-a27b-095a42605c34",
+  "name": "kkklllllll4",
+  "created_at": "2026-09-10T17:10:07.114Z",
+  "indexed": true,
+  "chunk_size": 800,
+  "overlap": 100,
+  "top_k": 5,
+  "pdfs": [
+    "Amal_Mohamed_CV.pdf"
+  ],
+  "chunks": 6,
+  "strictness": "Creative"
+}
