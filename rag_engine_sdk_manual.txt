@@ -1,0 +1,61 @@
+# RAG Engine SDK Manual
+
+The `rag_engine.exe` is a standalone CLI backend application for performing RAG operations (Retrieval Augmented Generation). It communicates via standard input (stdin) and standard output (stdout) using JSON payloads.
+
+## Initialization
+When you start the `rag_engine.exe` process, wait for it to output the ready signal:
+`{"status": "ready"}`
+
+If an error occurs during startup, it will output:
+`{"error": "<error message>", "traceback": "..."}`
+
+## Commands
+
+Send a JSON object as a single string line into the process's standard input to execute commands.
+
+### 1. Analyze (Querying the Vector Database)
+`{"req_id": "unique-id", "command": "analyze", "session_id": "session-name", "question": "What is the summary?", "top_k": 5, "evaluate": true}`
+
+**Response:**
+`{"req_id": "unique-id", "success": true, "data": {"answer": "...", "answerable": true, ...}}`
+
+### 2. Ingest (Index PDFs into the Vector Database)
+`{"req_id": "unique-id", "command": "ingest", "session_id": "session-name", "chunk_size": 800, "overlap": 100}`
+
+**Response:**
+`{"req_id": "unique-id", "success": true, "data": {"status": "done"}}`
+*Note: Progress updates during ingestion are written to `vectorstore/sessions/<session_id>/ingest_progress.json` atomically.*
+
+## Error Handling
+If a command fails or crashes, you will receive:
+`{"req_id": "unique-id", "success": false, "error": "<error message>", "traceback": "..."}`
+
+## Example: Calling from Node.js
+```javascript
+const { spawn } = require('child_process');
+const engine = spawn('rag_engine.exe');
+
+engine.stdout.on('data', (data) => {
+  const responses = data.toString().trim().split('\n');
+  for (const line of responses) {
+    if (!line) continue;
+    const res = JSON.parse(line);
+    if (res.status === 'ready') {
+      console.log('Engine ready!');
+      // Send a command
+      engine.stdin.write(JSON.stringify({
+        req_id: 1,
+        command: 'analyze',
+        session_id: 'default',
+        question: 'What is the main topic?',
+        top_k: 3,
+        evaluate: true
+      }) + '\n');
+    } else {
+      console.log('Response:', res);
+    }
+  }
+});
+
+engine.stderr.on('data', (data) => console.error(`Error: ${data}`));
+```
